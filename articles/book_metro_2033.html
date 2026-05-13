@@ -7,8 +7,15 @@
     <title>Вселенная Метро — Метро 2033</title>
     <link rel="stylesheet" href="/style.css" />
     <link rel="icon" href="/images/icon.png" />
-    <script src="/js/components.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+    <script src="/js/components.js" defer></script>
+    <script src="/js/comments.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.currentArticleId = 'book_metro_2033';
+            initComments(window.currentArticleId);
+        });
+    </script>
 </head>
 
 <body class="page">
@@ -198,6 +205,17 @@
                         </ol>
                     </section>
                 </div>
+                <section class="comments">
+                    <h3 class="comments__title">Комментарии (<span id="comments-count">0</span>)</h3>
+                    <div class="comments__form" id="comment-form">
+                        <textarea class="comments__textarea" id="comment-text" placeholder="Ваш комментарий..." rows="3"></textarea>
+                        <button class="comments__button" id="comment-button">Отправить</button>
+                    </div>
+                    <div class="comments__auth" id="comment-auth" style="display: none;">
+                        <p>Войдите, чтобы оставить комментарий → <a href="/auth.html">Вход</a></p>
+                    </div>
+                    <div class="comments__list" id="comments-list"></div>
+                </section>
             </article>
         </div>
     </main>

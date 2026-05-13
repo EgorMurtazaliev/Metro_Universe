@@ -32,16 +32,22 @@ function updateAuthButton() {
         };
     } else {
         authLink.textContent = 'Вход';
-        authLink.href = '/auth.html';
+
+        authLink.onclick = (e) => {
+            e.preventDefault();
+            localStorage.setItem('redirectAfterLogin', window.location.pathname);
+            window.location.href = '/auth.html';
+        };
+
         authLink.onmouseenter = null;
         authLink.onmouseleave = null;
-        authLink.onclick = null;
     }
 }
 
 function logout() {
     localStorage.removeItem('currentUser');
     updateAuthButton();
+    location.reload();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
